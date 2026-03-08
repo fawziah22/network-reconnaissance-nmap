@@ -49,10 +49,7 @@ The reconnaissance process was conducted in three stages to progressively gather
 
 A basic Nmap scan was performed to identify open ports and exposed network services on the target system.
 
-Command used:
-
-```bash
-nmap 203.0.113.100
+Command used: nmap 203.0.113.100
 2. Service and Script Enumeration
 Service version detection and default script scanning were conducted to gather additional information about exposed services.
 Command used:

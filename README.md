@@ -11,14 +11,14 @@ Network reconnaissance is a critical step in security assessments because it hel
 ## Lab Environment
 
 | Component | Description |
-|-----------|-------------|
+|----------|-------------|
 | Environment | Controlled cybersecurity training lab |
 | Target | Authorized training host |
 | Sanitized IP | 203.0.113.100 |
 | Tool Used | Nmap |
 | Scanning System | Kali Linux |
 
-**Note:** The IP address is sanitized for documentation purposes.
+Note: The IP address is sanitized for documentation purposes.
 
 ---
 
@@ -36,8 +36,8 @@ The goals of this project were to:
 
 ## Tools Used
 
-- **Nmap** – Network reconnaissance and scanning tool  
-- **Kali Linux Terminal** – Used to execute scanning commands  
+- Nmap – Network reconnaissance and scanning tool  
+- Kali Linux Terminal – Used to execute scanning commands  
 
 ---
 
@@ -45,60 +45,114 @@ The goals of this project were to:
 
 The reconnaissance process was conducted in three stages to progressively gather information about the target system.
 
+---
+
 ### 1. Basic Network Scan
 
 A basic Nmap scan was performed to identify open ports and exposed network services on the target system.
 
-Command used: nmap 203.0.113.100
-2. Service and Script Enumeration
+Command used:
+
+```bash
+nmap 203.0.113.100
+```
+
+---
+
+### 2. Service and Script Enumeration
+
 Service version detection and default script scanning were conducted to gather additional information about exposed services.
+
 Command used:
+
+```bash
 nmap -sC -sV 203.0.113.100
+```
+
 This scan identifies:
-service versions
-server configuration details
-additional information about network services
-3. Advanced Reconnaissance Scan
+
+- service versions  
+- server configuration details  
+- additional information about network services  
+
+---
+
+### 3. Advanced Reconnaissance Scan
+
 An advanced Nmap scan was performed to gather deeper intelligence about the target system.
+
 Command used:
+
+```bash
 nmap -A 203.0.113.100
+```
+
 This scan enables:
-OS detection
-advanced service detection
-script scanning
-traceroute analysis
-Key Findings
+
+- OS detection  
+- advanced service detection  
+- script scanning  
+- traceroute analysis  
+
+---
+
+## Key Findings
+
 The scan identified multiple exposed services running on the host.
-Port	Service	Description
-21	FTP	File transfer service
-23	Telnet	Remote login protocol
-25	SMTP	Mail transfer service
-80	HTTP	Web server
-110	POP3	Email retrieval service
-443	HTTPS	Secure web service
-1099	RMI Registry	Java remote service
-3306	MySQL	Database service
-3389	RDP	Remote desktop service
-5432	PostgreSQL	Database service
-8180	Application Service	Web application port
+
+| Port | Service | Description |
+|-----|--------|-------------|
+| 21 | FTP | File transfer service |
+| 23 | Telnet | Remote login protocol |
+| 25 | SMTP | Mail transfer service |
+| 80 | HTTP | Web server |
+| 110 | POP3 | Email retrieval service |
+| 443 | HTTPS | Secure web service |
+| 1099 | RMI Registry | Java remote service |
+| 3306 | MySQL | Database service |
+| 3389 | RDP | Remote desktop service |
+| 5432 | PostgreSQL | Database service |
+| 8180 | Application Service | Web application port |
+
 These services increase the potential attack surface of the system.
-Attack Surface Analysis
+
+---
+
+## Attack Surface Analysis
+
 The reconnaissance process identified multiple exposed services on the target host. Each open port represents a potential entry point that could be leveraged by an attacker if the service is misconfigured, outdated, or improperly secured.
+
 Examples of potential attack vectors include:
-Telnet (Port 23)
+
+### Telnet (Port 23)
+
 Telnet is a legacy remote administration protocol that transmits authentication data in plaintext. Attackers may intercept credentials using packet sniffing or man-in-the-middle attacks.
-Remote Desktop Protocol (Port 3389)
+
+### Remote Desktop Protocol (Port 3389)
+
 Publicly exposed RDP services are frequently targeted by brute-force attacks. If weak credentials are used, attackers may gain full remote access to the system.
-Database Services (Ports 3306 and 5432)
+
+### Database Services (Ports 3306 and 5432)
+
 Database services are typically intended for internal network access only. Public exposure increases the risk of unauthorized access or data exfiltration.
-Security Recommendations
+
+---
+
+## Security Recommendations
+
 Based on the findings, the following security improvements are recommended:
-Disable insecure legacy protocols such as Telnet and FTP
-Restrict database services to internal networks
-Limit RDP access using firewall rules or VPN access
-Regularly update and patch all exposed services
-Monitor network activity for suspicious behavior
-Reconnaissance Workflow
+
+- Disable insecure legacy protocols such as Telnet and FTP  
+- Restrict database services to internal networks  
+- Limit RDP access using firewall rules or VPN access  
+- Regularly update and patch all exposed services  
+- Monitor network activity for suspicious behavior  
+
+---
+
+## Reconnaissance Workflow
+
+```
 Target Identification
         ↓
 Basic Nmap Scan
@@ -108,5 +162,10 @@ Service & Script Enumeration
 Advanced Reconnaissance
         ↓
 Attack Surface Analysis
-Ethical Use Notice
+```
+
+---
+
+## Ethical Use Notice
+
 All scans performed in this project were conducted in a controlled and authorized cybersecurity training environment for educational purposes only.
